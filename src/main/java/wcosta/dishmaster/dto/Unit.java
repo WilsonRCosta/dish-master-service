@@ -1,5 +1,5 @@
 package wcosta.dishmaster.dto;
 
-public enum FoodUnit {
+public enum Unit {
     UNIT, ML, MG
 }

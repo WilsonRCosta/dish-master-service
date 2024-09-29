@@ -13,8 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Document(indexName = "dish")
-public class Dish {
+@Document(indexName = "meal")
+public class Meal {
 
     @Id
     private String id;
@@ -22,5 +22,5 @@ public class Dish {
     private final String name;
 
     @Field(type = FieldType.Nested)
-    private final List<Food> food;
+    private final List<Ingredient> ingredients;
 }

@@ -1,20 +1,20 @@
 package wcosta.dishmaster.mappers;
 
-import wcosta.dishmaster.dto.FoodDTO;
+import wcosta.dishmaster.dto.IngredientDTO;
 import wcosta.dishmaster.exceptions.BadRequestException;
-import wcosta.dishmaster.model.Food;
+import wcosta.dishmaster.model.Ingredient;
 import wcosta.dishmaster.model.Nutrient;
 import wcosta.dishmaster.model.NutrientType;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class FoodMapper {
+public class IngredientMapper {
 
-    public Food toFood(FoodDTO foodDTO) {
-        return new Food(
-                foodDTO.name(),
-                foodDTO.grams(),
-                foodDTO.nutrients().stream()
+    public Ingredient toIngredient(IngredientDTO dto) {
+        return new Ingredient(
+                dto.name(),
+                dto.grams(),
+                dto.nutrients().stream()
                         .map(n -> new Nutrient(toNutrientType(n.type()), n.percentage()))
                         .toList()
         );

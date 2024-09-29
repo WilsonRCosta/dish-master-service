@@ -1,9 +1,9 @@
 package wcosta.dishmaster.repository;
 
-import wcosta.dishmaster.model.Food;
+import wcosta.dishmaster.model.Ingredient;
 import org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FoodRepository extends ReactiveElasticsearchRepository<Food, String> {
+public interface IngredientRepository extends ReactiveElasticsearchRepository<Ingredient, String> {
 }

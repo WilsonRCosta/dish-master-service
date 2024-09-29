@@ -13,8 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Document(indexName = "food")
-public class Food {
+@Document(indexName = "ingredient")
+public class Ingredient {
 
     @Id
     private String id;
