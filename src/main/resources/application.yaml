@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: dishmaster
+  data:
+    elasticsearch:
+      cluster-name: dishmaster
+      cluster-nodes: localhost:9200
+      repositories:
+        enabled: true
+springdoc:
+  swagger-ui:
+    path: swagger-ui.html
+  api-docs:
+    path: /v3/dish-master-api-docs
+#server:
+#  servlet:
+#    context-path: /api
+  cors:
+    origins:
+      - http://localhost:4200
