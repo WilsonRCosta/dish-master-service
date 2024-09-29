@@ -21,8 +21,12 @@ public class Ingredient {
 
     private final String name;
 
-    private final int grams;
+    private final int serving;
 
     @Field(type = FieldType.Nested)
     private final List<Nutrient> nutrients;
+
+    private final Unit unit;
+
+    private final List<String> imagesUrls;
 }

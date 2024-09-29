@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import wcosta.dishmaster.dto.MealDTO;
-import wcosta.dishmaster.mappers.MealMapper;
+import wcosta.dishmaster.mappers.DishMasterMapper;
 import wcosta.dishmaster.model.Meal;
 import wcosta.dishmaster.model.Ingredient;
 import wcosta.dishmaster.repository.MealRepository;
@@ -23,6 +23,8 @@ public class MealService {
     private final MealRepository mealRepository;
 
     private final IngredientRepository ingredientRepository;
+
+    private final DishMasterMapper mappers;
 
     public Flux<Meal> getMeals(int portion) {
         return mealRepository.findAll();
@@ -43,7 +45,7 @@ public class MealService {
     }
 
     public Mono<Meal> saveMealAndIngredients(MealDTO mealDTO) {
-        final var meal = MealMapper.toMeal(mealDTO);
+        final Meal meal = mappers.toEntity(mealDTO);
 
         if (meal.getIngredients().isEmpty()) {
             return mealRepository.save(meal);

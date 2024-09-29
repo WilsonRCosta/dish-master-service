@@ -1,7 +1,7 @@
 package wcosta.dishmaster.service;
 
 import wcosta.dishmaster.dto.IngredientDTO;
-import wcosta.dishmaster.mappers.IngredientMapper;
+import wcosta.dishmaster.mappers.DishMasterMapper;
 import wcosta.dishmaster.model.Ingredient;
 import wcosta.dishmaster.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +15,12 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class IngredientService {
 
+    private DishMasterMapper mapper;
+
     private final IngredientRepository ingredientRepository;
 
     public Mono<Ingredient> createIngredient(IngredientDTO dto) {
-        return ingredientRepository.save(IngredientMapper.toIngredient(dto));
+        return ingredientRepository.save(mapper.toEntity(dto));
     }
 
     public Flux<Ingredient> listAllIngredients() {

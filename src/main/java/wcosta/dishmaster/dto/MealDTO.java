@@ -1,3 +1,21 @@
 package wcosta.dishmaster.dto;
 
-public record MealDTO(String name, java.util.List<IngredientDTO> ingredients) { }
+import wcosta.dishmaster.model.Category;
+import wcosta.dishmaster.model.Cuisine;
+
+import java.util.List;
+
+public record MealDTO(
+        String name,
+        List<IngredientDTO> ingredients,
+        int preparationTime,
+        int cookTime,
+        int totalTime,
+        int reviews,
+        float rating,
+        String description,
+        List<String> imagesUrls,
+        List<StepDTO> steps,
+        List<Category> categories,
+        Cuisine cuisine
+) { }

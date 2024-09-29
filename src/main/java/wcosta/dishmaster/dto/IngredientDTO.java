@@ -1,3 +1,13 @@
 package wcosta.dishmaster.dto;
 
-public record IngredientDTO(String name, int grams, java.util.List<NutrientDTO> nutrients) { }
+import wcosta.dishmaster.model.Unit;
+
+import java.util.List;
+
+public record IngredientDTO(
+        String name,
+        int serving,
+        Unit unit,
+        List<String> imagesUrls,
+        List<NutrientDTO> nutrients
+) { }

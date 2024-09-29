@@ -21,6 +21,27 @@ public class Meal {
 
     private final String name;
 
+    private final int preparationTime;
+
+    private final int cookTime;
+
+    private final int totalTime;
+
+    private final int reviews;
+
+    private final float rating;
+
+    private final String description;
+
+    private final List<String> imagesUrls;
+
     @Field(type = FieldType.Nested)
     private final List<Ingredient> ingredients;
+
+    @Field(type = FieldType.Nested)
+    private final List<Step> steps;
+
+    private final List<Category> categories;
+
+    private final Cuisine cuisine;
 }
