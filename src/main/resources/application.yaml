@@ -1,4 +1,7 @@
 spring:
+  web:
+    cors:
+      allowed-origins: http://localhost:4200
   application:
     name: dishmaster
   data:
@@ -9,12 +12,8 @@ spring:
         enabled: true
 springdoc:
   swagger-ui:
-    path: swagger-ui.html
+    path: /api/swagger-ui
   api-docs:
     path: /v3/dish-master-api-docs
-#server:
-#  servlet:
-#    context-path: /api
-  cors:
-    origins:
-      - http://localhost:4200
+server:
+  port: 8080

@@ -1,5 +1,6 @@
 package wcosta.dishmaster;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,9 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableWebFlux
 public class DishMasterApplication {
 
+  @Value("${spring.web.cors.allowed-origins}")
+  private String allowedOrigins;
+
   public static void main(String[] args) {
     SpringApplication.run(DishMasterApplication.class, args);
   }
@@ -20,7 +24,7 @@ public class DishMasterApplication {
   public CorsWebFilter corsConfigurationSource() {
     CorsConfiguration conf = new CorsConfiguration();
     conf.setAllowCredentials(true);
-    conf.addAllowedOrigin("http://localhost:4200");
+    conf.addAllowedOrigin(allowedOrigins);
     conf.addAllowedHeader("*");
     conf.addAllowedMethod("*");
 
