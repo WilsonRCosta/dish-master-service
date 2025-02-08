@@ -10,17 +10,13 @@ import reactor.core.publisher.Mono;
 public class GlobalExceptionHandler {
 
   @ExceptionHandler(NotFoundException.class)
-  public Mono<ResponseEntity<String>> handleEntityNotFound(NotFoundException ex) {
+  public Mono<ResponseEntity<String>> handleEntityNotFoundException(NotFoundException ex) {
     return Mono.just(
         ResponseEntity.status(HttpStatus.NOT_FOUND).body("Entity not found: " + ex.getMessage()));
   }
 
   @ExceptionHandler(BadRequestException.class)
-
-
-
-
-  public Mono<ResponseEntity<String>> handleBadRequest(BadRequestException ex) {
+  public Mono<ResponseEntity<String>> handleBadRequestException(BadRequestException ex) {
     return Mono.just(
         ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request: " + ex.getMessage()));
   }
