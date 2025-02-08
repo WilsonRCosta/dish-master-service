@@ -1,3 +1,3 @@
 package wcosta.dishmaster.dto;
 
-public record NutrientDTO(String type, int percentage) { }
+public record NutrientDTO(String type, int percentage) {}

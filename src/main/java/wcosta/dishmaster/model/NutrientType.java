@@ -1,8 +1,8 @@
 package wcosta.dishmaster.model;
 
 public enum NutrientType {
-    PROTEIN,
-    CARBS,
-    FAT,
-    CALORIES
+  PROTEIN,
+  CARBS,
+  FAT,
+  CALORIES
 }

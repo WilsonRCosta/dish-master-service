@@ -12,21 +12,21 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableWebFlux
 public class DishMasterApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DishMasterApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(DishMasterApplication.class, args);
+  }
 
-	@Bean
-	public CorsWebFilter corsConfigurationSource() {
-		CorsConfiguration conf = new CorsConfiguration();
-		conf.setAllowCredentials(true);
-		conf.addAllowedOrigin("http://localhost:4200");
-		conf.addAllowedHeader("*");
-		conf.addAllowedMethod("*");
+  @Bean
+  public CorsWebFilter corsConfigurationSource() {
+    CorsConfiguration conf = new CorsConfiguration();
+    conf.setAllowCredentials(true);
+    conf.addAllowedOrigin("http://localhost:4200");
+    conf.addAllowedHeader("*");
+    conf.addAllowedMethod("*");
 
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", conf);
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", conf);
 
-		return new CorsWebFilter(source);
-	}
+    return new CorsWebFilter(source);
+  }
 }

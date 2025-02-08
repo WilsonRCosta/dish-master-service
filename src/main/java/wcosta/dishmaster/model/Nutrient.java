@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Nutrient {
 
-    private NutrientType type;
+  private NutrientType type;
 
-    private int percentage;
+  private int percentage;
 }

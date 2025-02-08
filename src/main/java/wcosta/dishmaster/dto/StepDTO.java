@@ -1,3 +1,3 @@
 package wcosta.dishmaster.dto;
 
-public record StepDTO(int step, String description) { }
+public record StepDTO(int step, String description) {}
