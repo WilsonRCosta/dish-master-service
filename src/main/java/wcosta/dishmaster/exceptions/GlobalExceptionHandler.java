@@ -16,8 +16,9 @@ public class GlobalExceptionHandler {
   }
 
   @ExceptionHandler(BadRequestException.class)
+
+
   public Mono<ResponseEntity<String>> handleBadRequest(BadRequestException ex) {
-    return Mono.just(
-        ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request: " + ex.getMessage()));
+    return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request: " + ex.getMessage()));
   }
 }
