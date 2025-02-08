@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/ingredient")
+@RequestMapping("/ingredients")
 @RequiredArgsConstructor
 public class IngredientController {
 
@@ -21,12 +21,8 @@ public class IngredientController {
     }
 
     @GetMapping
-    public Flux<Ingredient> listAllIngredients() {
-        return ingredientService.listAllIngredients();
+    public Flux<Ingredient> getIngredients(@RequestParam(defaultValue = "0") int page,
+                                               @RequestParam(defaultValue = "10") int size) {
+        return ingredientService.listAllIngredients(page, size);
     }
-//
-//    @PostMapping("/search")
-//    public Flux<Ingredient> searchIngredient(String name) {
-//        return Flux.just();
-//    }
 }

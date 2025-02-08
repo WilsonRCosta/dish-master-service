@@ -1,5 +1,7 @@
 package wcosta.dishmaster.controller;
 
+import org.springframework.http.HttpStatus;
+import wcosta.dishmaster.dto.IngredientDTO;
 import wcosta.dishmaster.dto.MealDTO;
 import wcosta.dishmaster.model.Meal;
 import wcosta.dishmaster.service.MealService;
@@ -9,7 +11,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/meals")
@@ -24,18 +25,20 @@ public class MealController {
     }
 
     @GetMapping("/search/ingredient")
-    public Flux<Meal> searchMealByIngredient(@RequestParam("ingredient") String ingredientName) {
-        return mealService.searchMealsByIngredient(ingredientName);
+    public Flux<Meal> searchMealByIngredient(@RequestParam("name") String name) {
+        return mealService.searchMealsByIngredient(name);
     }
 
     @PostMapping("/{id}/ingredients")
-    public Mono<Meal> addIngredientToMeal() {
-        return Mono.just(null);
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Meal> addIngredientToMeal(@PathVariable("id") String id, @RequestBody IngredientDTO dto) {
+        return mealService.addIngredientToMeal(id, dto);
     }
 
     @DeleteMapping("/{id}/ingredients/{ingId}")
-    public Mono<Meal> removeIngredientFromMeal() {
-        return Mono.just(null);
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Meal> removeIngredientFromMeal(@PathVariable("id") String id, @PathVariable("ingId") String ingId) {
+        return mealService.removeIngredientFromMeal(id, ingId);
     }
 
     @PostMapping("/bulk")
@@ -44,12 +47,12 @@ public class MealController {
     }
 
     @GetMapping
-    public Flux<Meal> getMeals(@RequestParam(value = "numOfMeals", required = false) Integer portion) {
-        return mealService.getMeals(Optional.ofNullable(portion).orElse(1));
+    public Flux<Meal> getMeals(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        return mealService.getMeals(page, size);
     }
 
     @DeleteMapping("/{id}")
     public void deleteMeal(String id) {
-
+        mealService.deleteMeal(id);
     }
 }

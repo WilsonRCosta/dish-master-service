@@ -35,8 +35,7 @@ public class Meal {
 
     private final List<String> imagesUrls;
 
-    @Field(type = FieldType.Nested)
-    private final List<Ingredient> ingredients;
+    private final List<String> ingredientIds;
 
     @Field(type = FieldType.Nested)
     private final List<Step> steps;

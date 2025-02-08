@@ -1,5 +1,6 @@
 package wcosta.dishmaster.service;
 
+import org.springframework.data.domain.PageRequest;
 import wcosta.dishmaster.dto.IngredientDTO;
 import wcosta.dishmaster.mappers.DishMasterMapper;
 import wcosta.dishmaster.model.Ingredient;
@@ -15,7 +16,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class IngredientService {
 
-    private DishMasterMapper mapper;
+    private final DishMasterMapper mapper;
 
     private final IngredientRepository ingredientRepository;
 
@@ -23,7 +24,19 @@ public class IngredientService {
         return ingredientRepository.save(mapper.toEntity(dto));
     }
 
-    public Flux<Ingredient> listAllIngredients() {
-        return ingredientRepository.findAll();
+    public Flux<Ingredient> listAllIngredients(int page, int size) {
+        return ingredientRepository.findAllBy(PageRequest.of(page, size));
+    }
+
+    public Mono<Ingredient> saveOrUpdateIngredient(Ingredient ingredient) {
+        return ingredientRepository.findById(ingredient.getId()).switchIfEmpty(ingredientRepository.save(ingredient));
+    }
+
+    public Flux<Ingredient> searchByName(String prefix) {
+        return ingredientRepository.findByNameStartingWith(prefix);
+    }
+
+    public void deleteIngredient(String id) {
+        ingredientRepository.deleteById(id);
     }
 }

@@ -1,11 +1,14 @@
 package wcosta.dishmaster.model;
 
 public enum Category {
-    SOUPS,
-    SALADS,
+    DESERTS,
+    FISHES,
+    HEALTHY,
+    LOW_CARBS,
     MEATS,
     PASTA,
     PIZZA,
-    HEALTHY,
+    SALADS,
+    SOUPS,
     VEGETARIAN
 }
